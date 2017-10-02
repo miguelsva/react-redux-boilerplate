@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Counter from '../../components/Counter';
+import { increase, decrease } from './actions';
+import { getCounter } from './selectors';
 import './styles.css';
 
-class App extends Component {
+export class App extends Component {
   render() {
+    const { count, onIncrease, onDecrease } = this.props;
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to Simple React Redux</h1>
+      <div className="app">
+        <header className="app-header">
+          <h1 className="app-title">Welcome to Simple React Redux</h1>
         </header>
-        <p className="App-intro">
-        </p>
+        <Counter
+          value={count}
+          onIncrease={onIncrease}
+          onDecrease={onDecrease}
+        />
       </div>
     );
   }
 }
 
-export default App;
+// PROPTYPES...
+
+const mapStateToProps = state => ({
+  count: getCounter(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  onIncrease: () => dispatch(increase()),
+  onDecrease: () => dispatch(decrease())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
