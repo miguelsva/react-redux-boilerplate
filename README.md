@@ -1,1 +1,1 @@
-# simple-react-redux
+# react-redux-boilerplate
