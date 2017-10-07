@@ -1,1 +1,8 @@
-export const getCounter = (state) => state.app.counter;
+import { createSelector } from 'reselect';
+
+const selectApp = state => state.app;
+
+export const selectCounter = () => createSelector(
+  selectApp,
+  (app) => app.counter
+);

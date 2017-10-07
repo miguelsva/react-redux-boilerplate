@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import Counter from '../../components/Counter';
 import { increase, decrease } from './actions';
-import { getCounter } from './selectors';
+import { selectCounter } from './selectors';
 import './styles.css';
 
 export class App extends Component {
@@ -25,8 +26,8 @@ export class App extends Component {
 
 // PROPTYPES...
 
-const mapStateToProps = state => ({
-  count: getCounter(state)
+const mapStateToProps = createStructuredSelector({
+  count: selectCounter()
 });
 
 const mapDispatchToProps = dispatch => ({
