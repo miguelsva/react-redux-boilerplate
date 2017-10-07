@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Counter from '../../components/Counter';
@@ -22,9 +23,13 @@ export class App extends Component {
       </div>
     );
   }
-}
 
-// PROPTYPES...
+  static propTypes = {
+    count: PropTypes.number.isRequired,
+    onIncrease: PropTypes.func.isRequired,
+    onDecrease: PropTypes.func.isRequired
+  };
+}
 
 const mapStateToProps = createStructuredSelector({
   count: selectCounter()

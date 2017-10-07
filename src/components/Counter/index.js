@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Counter = ({ value, onIncrease, onDecrease }) => (
   <div>
@@ -8,6 +9,10 @@ const Counter = ({ value, onIncrease, onDecrease }) => (
   </div>
 );
 
-// PROPTYPES...
+Counter.propTypes = {
+  value: PropTypes.number.isRequired,
+  onIncrease: PropTypes.func.isRequired,
+  onDecrease: PropTypes.func.isRequired
+};
 
 export default Counter;
